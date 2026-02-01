@@ -1,5 +1,5 @@
 // Write your code at relevant places in the code below
-
+import React,{useState} from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense"
 
@@ -11,16 +11,19 @@ function App() {
     { id: "3", date: new Date(2023, 10, 11), title: "Pen", price: 1 },
     { id: "4", date: new Date(2023, 1, 14), title: "Laptop", price: 200 },
   ];
-
-  const handleOnGetExpenseData = (expenseData)=>{
-    console.log(expenseData);
+  const [expensesData, setExpenses] = useState(expenses);
+  const handleGetExpenseData = (expense)=>{
+    // console.log(expense);
+    setExpenses((prevData)=>{
+      return [...prevData, expense]
+    });
   }
 
   return (
     <div>
       <h1>Let's get Started</h1>
-      <NewExpense onGetExpenseData={handleOnGetExpenseData}/>
-      <Expenses expenses={expenses}/>
+      <NewExpense onGetExpenseData={handleGetExpenseData}/>
+      <Expenses expenses={expensesData}/>
     </div>
   );
 }
