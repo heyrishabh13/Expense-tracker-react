@@ -12,10 +12,14 @@ function App() {
     { id: "4", date: new Date(2023, 1, 14), title: "Laptop", price: 200 },
   ];
 
+  const handleOnGetExpenseData = (expenseData)=>{
+    console.log(expenseData);
+  }
+
   return (
     <div>
       <h1>Let's get Started</h1>
-      <NewExpense/>
+      <NewExpense onGetExpenseData={handleOnGetExpenseData}/>
       <Expenses expenses={expenses}/>
     </div>
   );
